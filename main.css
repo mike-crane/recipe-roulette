@@ -10,12 +10,15 @@ main {
   margin: 50px auto;
 }
 
-label, input {
-  display: block;
+h1 {
+  font-family: 'Bangers', cursive;
+  text-align: center;
+  font-size: 3em;
+  margin: .5em 0 0;
 }
 
-input {
-  margin: 10px auto;
+label {
+  display: block;
 }
 
 form {
@@ -55,6 +58,6 @@ img {
 .description {
   display: inline-block;
   vertical-align: top;
-  width: 80%;
+  width: 60%;
   padding-left: 10px;
 }
