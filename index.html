@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Roulette App</title>
+  <link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+  <header role="banner">
+    <form action='#' method='post'>
+      <label for="recipe">Recipe Roulette</label>
+      <input id="recipe" name="recipe" type="text" placeholder="e.g. beef" required>
+      <button type="submit">Search</button>
+    </form>
+  </header>
+  
+  <main role="main">
+    <div class="js-search-results"></div>
+  </main>
+  
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
