@@ -23,7 +23,7 @@ function parseUrls(data) {
 
   // parse urls into resultArr
   for (let i=0; i < recipeArr.length; i++) {
-    resultArr.push(recipeArr[i].recipe);  
+    resultArr.push(recipeArr[i].recipe.url);  
   }
 
   // shuffle the order of the url items in resultArr
@@ -57,18 +57,21 @@ function getLinkPreview(urlArr) {
     let callNumber = 'call' + i;
 
     const query = {
-      q: urlArr[i].url,
+      q: urlArr[i],
       key: '5ac56159a2e7c314bae787bbde4c246d44ae5994585ee'
     };
 
-    callNumber = $.ajax(linkPreviewEndpoint, query);
+    callNumber = $.getJSON(linkPreviewEndpoint, query);
 
   } 
 
   $.when(call0, call1, call2, call3, call4, call5)
-    .then(console.log(data));
+    .then(testCallback);
 
-  // urlsToDom(selectedUrls);
+}
+
+function testCallback(data) {
+  console.log(data);
 }
 
 // function responsible for appending URL's to the DOM
