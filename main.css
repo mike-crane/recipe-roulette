@@ -17,8 +17,12 @@ h1 {
   margin: .5em 0 0;
 }
 
-label {
+label, input {
   display: block;
+}
+
+input {
+  margin: 0 auto 15px;
 }
 
 form {

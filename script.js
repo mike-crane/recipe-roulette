@@ -35,12 +35,45 @@ function parseUrls(data) {
   let begin = Math.floor(Math.random() * resultArr.length);
   let selectedUrls = shuffledUrls.slice(begin, begin + 6);
 
-  urlsToDom(selectedUrls);
+  getLinkPreview(selectedUrls);
   
+}
+
+
+
+function getLinkPreview(urlArr) {
+
+  const linkPreviewEndpoint = 'https://api.linkpreview.net/';
+
+  let call0;
+  let call1;
+  let call2;
+  let call3;
+  let call4;
+  let call5;
+
+  for (let i=0; i < urlArr.length; i++) {
+
+    let callNumber = 'call' + i;
+
+    const query = {
+      q: urlArr[i].url,
+      key: '5ac56159a2e7c314bae787bbde4c246d44ae5994585ee'
+    };
+
+    callNumber = $.ajax(linkPreviewEndpoint, query);
+
+  } 
+
+  $.when(call0, call1, call2, call3, call4, call5)
+    .then(console.log(data));
+
+  // urlsToDom(selectedUrls);
 }
 
 // function responsible for appending URL's to the DOM
 function urlsToDom(urlArr) {
+
   let recipeCard = '';
 
   for (let i=0; i < urlArr.length; i++) {
