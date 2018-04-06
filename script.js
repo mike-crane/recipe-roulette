@@ -22,13 +22,13 @@ function parseUrls(data) {
   let resultArr = [];
 
   // parse urls into resultArr
-  for (let i=0; i < recipeArr.length; i++) {
-    resultArr.push(recipeArr[i].recipe.url);  
+  for (let i = 0; i < recipeArr.length; i++) {
+    resultArr.push(recipeArr[i].recipe.url);
   }
 
   // shuffle the order of the url items in resultArr
-  const shuffledUrls = resultArr.sort(function() { 
-    .5 - Math.random()  
+  const shuffledUrls = resultArr.sort(function () {
+    .5 - Math.random()
   });
 
   // select a random segment of 5 items from 
@@ -36,7 +36,7 @@ function parseUrls(data) {
   let selectedUrls = shuffledUrls.slice(begin, begin + 6);
 
   getLinkPreview(selectedUrls);
-  
+
 }
 
 
@@ -52,43 +52,32 @@ function getLinkPreview(urlArr) {
   let call4;
   let call5;
 
-  for (let i=0; i < urlArr.length; i++) {
+  for (let i = 0; i < urlArr.length; i++) {
 
-    let callNumber = 'call' + i;
+    let callNumber;
 
     const query = {
       q: urlArr[i],
-      key: '5ac56159a2e7c314bae787bbde4c246d44ae5994585ee'
+      key: '5ac7b41b7aa774703af37c2925cf2191b72dcb5f7f286'
     };
 
-    callNumber = $.getJSON(linkPreviewEndpoint, query);
+    callNumber = $.getJSON(linkPreviewEndpoint, query, urlsToDom);
+  }
 
-  } 
-
-  $.when(call0, call1, call2, call3, call4, call5)
-    .then(testCallback);
-
-}
-
-function testCallback(data) {
-  console.log(data);
 }
 
 // function responsible for appending URL's to the DOM
-function urlsToDom(urlArr) {
+function urlsToDom(data) {
 
   let recipeCard = '';
 
-  for (let i=0; i < urlArr.length; i++) {
+  let recipeUrl = data.url;
+  let recipeImg = data.image;
+  let recipeDesc = data.description;
 
-    let recipeUrl = urlArr[i].url;
-    let recipeImg = urlArr[i].image;
-    let recipeDesc = urlArr[i].label;
+  recipeCard += `<section role="region"><a href="${recipeUrl}"><div class="recipe-card"><img src="${recipeImg}"/><p class="description">${recipeDesc}</p></div></a></section>`;
 
-    recipeCard += `<section role="region"><a href="${recipeUrl}"><div class="recipe-card"><img src="${recipeImg}"/><p class="description">${recipeDesc}</p></div></a></section>`;
-
-    $('.js-search-results').html(recipeCard);
-  }
+  $('.js-search-results').append(recipeCard);
 
 }
 
@@ -106,6 +95,3 @@ function handleSubmitButton() {
 }
 
 $(handleSubmitButton);
-
-
-
