@@ -14,15 +14,25 @@
   <header role="banner">
     <h1>Recipe Roulette</h1>
     <form action='#' method='post'>
-      <label for="recipe">Try Your Luck</label>
+      <!-- <label for="recipe">Try Your Luck</label> -->
       <input id="recipe" name="recipe" type="text" placeholder="e.g. beef" required>
-      <button type="submit">SPIN</button>
+      <button type="submit">Try Your Luck</button>
     </form>
   </header>
   
   <main role="main">
-    <div class="js-search-results"></div>
+    <div class="js-search-results search-results"></div>
   </main>
+  <div class="modal-wrapper">
+    <div class="modal">
+      <div class="head">
+        <p>Label</p>
+        <a class="btn-close trigger" href="javascript:;"></a>
+      </div>
+      <div class="content">
+      </div>
+    </div>
+  </div>
   
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="script.js"></script>
