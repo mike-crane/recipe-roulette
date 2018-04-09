@@ -1,5 +1,8 @@
 'use strict';
 
+let recipes = [];
+let currentRecipe = null;
+
 // RECIPE API CALL
 const recipeEndpoint = 'https://api.edamam.com/search';
 
@@ -33,9 +36,9 @@ function parseUrls(data) {
 
   // select a random segment of 5 items from 
   let begin = Math.floor(Math.random() * resultArr.length);
-  let selectedUrls = shuffledUrls.slice(begin, begin + 6);
+  recipes = shuffledUrls.slice(begin, begin + 6);
 
-  urlsToDom(selectedUrls);
+  urlsToDom(recipes);
 }
 
 // function responsible for appending URL's to the DOM
@@ -49,7 +52,7 @@ function urlsToDom(urlArr) {
     let recipeImg = urlArr[i].image;
     let recipeLabel = urlArr[i].label;
 
-    recipeCard += `<section role="region"><a href="${recipeUrl}" class="recipe-link trigger"><div class="recipe-card"><img src="${recipeImg}"/><p class="label">${recipeLabel}</p></div></a></section>`;
+    recipeCard += `<section role="region"><a href="${recipeUrl}" recipeIndex="${i}" class="recipe-link trigger"><div class="recipe-card"><img src="${recipeImg}"/><p class="label">${recipeLabel}</p></div></a></section>`;
 
     $('.js-search-results').html(recipeCard);
 
@@ -63,6 +66,7 @@ function urlsToDom(urlArr) {
     e.preventDefault();
 
     let url = this.href;
+    currentRecipe = parseInt($(this).attr('recipeIndex'));
 
     const linkPreviewEndpoint = 'https://api.linkpreview.net/';
 
@@ -82,16 +86,26 @@ function showExpandedView(data) {
 
   let description = data.description;
   let image = data.image; 
+  let ingredients = recipes[currentRecipe].ingredientLines;
+  let ingredientsList = '';
 
-  let moreDetails = `<section class="details" role="region"><img src="${image}"/><p class="description">${description}</p></section>`;
+  for (let i = 0; i < ingredients.length; i++) {
+    ingredientsList += '<li>' + ingredients[i] + '</li>';
+  }
 
+  let moreDetails = `<section class="details" role="region"><img src="${image}"/><p class="description">${description}</p><ul class="ingredients">${ingredientsList}</ul></section>`;
+
+  $('.modal-title').text(recipes[currentRecipe].label);
+  
   $('.content').append(moreDetails);
+
+  
 
   $('.btn-close').click(function () {
     $('.content').empty();
   })
 
-  console.log(data);
+  // console.log(data);
 }
 
 
