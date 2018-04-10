@@ -15,14 +15,29 @@
     <h1>Recipe Roulette</h1>
     <form action='#' method='post'>
       <!-- <label for="recipe">Try Your Luck</label> -->
-      <input id="recipe" name="recipe" type="text" placeholder="e.g. beef" required>
-      <button type="submit">Try Your Luck</button>
+      <input id="recipe" name="recipe" type="text" placeholder="e.g. chicken" required>
+      <button type="submit">Search</button>
     </form>
+    <button type="submit" class="roulette">Try Your Luck</button>
   </header>
   
   <main role="main">
     <div class="js-search-results search-results"></div>
   </main>
+
+  <div class="feature-tour">
+    <h2>Welcome to Recipe Roulette</h2>
+    <h3>the app that let's you try your luck with whatever ingredient(s) you may have lying around.</h3>
+    
+    <div class="container"> 
+      <h3>It's as simple as...</h3>  
+      <div class="intro-box"><span class="step">1</span><p>Enter the ingredient(s) into the search field & click the search button.</p></div>
+      <div class="intro-box"><span class="step">2</span><p>A list of 6 randomly chosen recipes containing your ingredient(s) will pop up.</p></div>
+      <div class="intro-box"><span class="step">3</span><p>Click a recipe bullet to get a more detailed description and a list of ingredients.</p></div>
+      <div class="intro-box"><span class="step">4</span><p>If your in the mood to live dangerously, click the 'Try Your Luck' button to have a recipe randomly selected for you.</p></div>
+    </div>
+  </div>
+  
   <div class="modal-wrapper">
     <div class="modal">
       <div class="head">

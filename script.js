@@ -3,9 +3,9 @@
 let recipes = [];
 let currentRecipe = null;
 
-// RECIPE API CALL
 const recipeEndpoint = 'https://api.edamam.com/search';
 
+// responsible for calling edamam API to get recipe data
 function getRecipeData(searchTerm, callback) {
 
   const query = {
@@ -56,12 +56,22 @@ function urlsToDom(urlArr) {
 
     $('.js-search-results').html(recipeCard);
 
+    // set character limit on recipe labels
     $(".label").text(function (index, currentText) {
       return currentText.substr(0, 25);
     });
   }
 
+  // randomly selects 1 of the 6 displayed recipes
+  $('.roulette').click(function () {
+    $.fn.random = function () {
+      return this.eq(Math.floor(Math.random() * 6));
+    }
+    $(".recipe-card").random().css({ "background-color": "#333A3D", "color": "#fff"});
+  })
+  
 
+  // on click, calls second api (linkpreview) and triggers modal with recipe details
   $('.trigger').click(function (e) {
     e.preventDefault();
 
@@ -79,13 +89,17 @@ function urlsToDom(urlArr) {
 
     $('.modal-wrapper').toggleClass('open');
     $('main').toggleClass('blur');
+
   })
 }
+
 
 function showExpandedView(data) {
 
   let description = data.description;
-  let image = data.image; 
+  let urlLink = data.url;
+  let image = recipes[currentRecipe].image; 
+  let modalLabel = recipes[currentRecipe].label;
   let ingredients = recipes[currentRecipe].ingredientLines;
   let ingredientsList = '';
 
@@ -93,17 +107,19 @@ function showExpandedView(data) {
     ingredientsList += '<li>' + ingredients[i] + '</li>';
   }
 
-  let moreDetails = `<section class="details" role="region"><img src="${image}"/><p class="description">${description}</p><ul class="ingredients">${ingredientsList}</ul></section>`;
+  let moreDetails = `<section class="details" role="region"><a href="${urlLink}"><img src="${image}"/></a><ul class="ingredients">${ingredientsList}</ul><p class="description">${description}</p></section>`;
 
-  $('.modal-title').text(recipes[currentRecipe].label);
+  $('.modal-title').text(modalLabel);
   
   $('.content').append(moreDetails);
 
-  
-
   $('.btn-close').click(function () {
     $('.content').empty();
-  })
+  });
+
+  $(".modal-title").text(function (index, currentText) {
+    return currentText.substr(0, 35);
+  });
 
   // console.log(data);
 }
@@ -119,6 +135,8 @@ function handleSubmitButton() {
     recipe.val('');
 
     getRecipeData(recipeSearch, parseUrls);
+
+    $('.feature-tour').css('display', 'none');
   })
 }
 

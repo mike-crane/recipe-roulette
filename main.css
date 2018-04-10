@@ -1,22 +1,25 @@
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 header {
-  background-color: #000;
+  background-color: #F7B857;
+  border-bottom: 4px solid #333A3D;
   padding: .5em 0;
 }
 
 main {
   width: 85%;
-  margin: 50px auto;
+  margin: 20px auto 50px;
 }
 
 h1 {
   font-family: 'Bangers', cursive;
-  color: #fff;
+  color: #333A3D;
   text-align: center;
-  font-size: 3em;
+  font-size: 4em;
   margin: 0;
 }
 
@@ -26,8 +29,29 @@ label {
 }
 
 input, button {
+  /* display: block; */
+  /* margin: 5px auto;  */
+  border: 3px solid #333A3D;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+button {
+  background-color: #A0A3A4;
+  color: #333A3D;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.roulette {
+  background-color: #9E2A2B;
+  border: none;
+  padding: 6px 10px;
+  color: #fff;
   display: block;
-  margin: 5px auto; 
+  margin: 25px auto 0;
+  /* margin-bottom: 50px; */
+  font-size: 25px;
 }
 
 form {
@@ -41,8 +65,9 @@ section {
 }
 
 .recipe-card {
-  background-color: #E5E5E5;
-  border: 3px solid #000;
+  color: #333A3D;
+  background-color: #A0A3A4;
+  border: 4px solid #333A3D;
   margin: 10px 0;
   border-bottom-right-radius: 50%;
   border-top-right-radius: 50%;
@@ -60,11 +85,11 @@ img {
   display: inline-block;
   vertical-align: middle;
   width: 20%;
-  border-right: 3px solid #000;
+  border-right: 4px solid #333A3D;
 }
 
 .label {
-  color: #000;
+  /* color: #fff; */
   font-weight: bold;
   font-size: 20px;
   display: inline-block;
@@ -90,7 +115,7 @@ img {
   height:100%;
   position:fixed;
   top:0; left:0;
-  background:rgba(253,151,31,0.75);
+  background:rgba(247,184,87,0.75);
   visibility:hidden;
   opacity:0;
   -webkit-transition: all 0.25s ease-in-out;
@@ -112,6 +137,7 @@ img {
   position:relative;
   top:50%; left:50%;
   background:#fff;
+  border-radius: 4px;
   opacity:0;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -127,9 +153,11 @@ img {
 .head{
   width:90%;
   height:32px;
-  padding:1.5em 5%;
+  padding:1em 5%;
   overflow:hidden;
-  background:#0D2C54;
+  background:#333A3D;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .head p {
@@ -171,3 +199,99 @@ img {
 .content{
   padding:5%;
 }
+
+.modal-title {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.details {
+  display: block;
+  width: 100%;
+}
+
+.details img {
+  vertical-align: top;
+  border: none;
+  width: 25%;
+}
+
+.description {
+  width: 100%;
+  height: 110px;
+  overflow: auto;
+}
+
+.ingredients {
+  display: inline-block;
+  margin: 0;
+  width: 300px;
+  height: 135px;
+  overflow: scroll;
+}
+
+li {
+  font-size: 14px;
+}
+
+.full-recipe {
+  text-align: center;
+}
+
+/* feature tour bubbles */
+
+.feature-tour {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 0;
+}
+
+.container {
+  background-color: lightgray;
+  width: 80%;
+  margin: 50px auto 0;
+  padding: 5px 20px 15px;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.intro-box {
+  position: relative;
+  vertical-align: top;
+  font-size: 17px;
+  display: inline-block;
+  width: 19%;
+  padding: 0 6px 0 12px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.intro-box:not(:last-child) { 
+  margin-right: 8%;
+}
+
+.step {
+  position: absolute; 
+  top: -10px;
+  left: -10px;
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 50%;
+  padding: 2px 5px;
+  background-color: #000;
+  color: #fff;
+}
+
