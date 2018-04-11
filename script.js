@@ -67,7 +67,7 @@ function urlsToDom(urlArr) {
     $.fn.random = function () {
       return this.eq(Math.floor(Math.random() * 6));
     }
-    $(".recipe-card").random().css({ "background-color": "#333A3D", "color": "#fff"});
+    $(".recipe-card").random().css({ "background-color": "rgba(247,184,87,0.75)", "color": "#000"});
   })
   
 
