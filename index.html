@@ -14,7 +14,7 @@
   <header role="banner">
     <h1>Recipe Roulette</h1>
     <form action='#' method='post'>
-      <input id="recipe" name="recipe" type="text" placeholder="e.g. chicken" required>
+      <input id="recipe" name="recipe" type="text" pattern="[A-Za-z].{1,}" title="Must contain 2 or more characters. Cannot contain numbers." placeholder="e.g. chicken" required>
       <button type="submit">Search</button>
     </form>
     <button type="submit" class="roulette">Try Your Luck</button>

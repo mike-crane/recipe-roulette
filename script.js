@@ -137,6 +137,7 @@ function handleSubmitButton() {
     getRecipeData(recipeSearch, parseUrls);
 
     $('.feature-tour').css('display', 'none');
+    $('.roulette').css('display', 'block');
   })
 }
 
