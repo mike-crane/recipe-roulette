@@ -25,13 +25,13 @@ function parseUrls(data) {
   let resultArr = [];
 
   // parse urls into resultArr
-  for (let i=0; i < recipeArr.length; i++) {
-    resultArr.push(recipeArr[i].recipe);  
+  for (let i = 0; i < recipeArr.length; i++) {
+    resultArr.push(recipeArr[i].recipe);
   }
 
   // shuffle the order of the url items in resultArr
-  const shuffledUrls = resultArr.sort(function() { 
-    .5 - Math.random()  
+  const shuffledUrls = resultArr.sort(function () {
+    .5 - Math.random()
   });
 
   // select a random segment of 5 items from 
@@ -46,7 +46,7 @@ function urlsToDom(urlArr) {
 
   let recipeCard = '';
 
-  for (let i=0; i < urlArr.length; i++) {
+  for (let i = 0; i < urlArr.length; i++) {
 
     let recipeUrl = urlArr[i].url;
     let recipeImg = urlArr[i].image;
@@ -67,9 +67,12 @@ function urlsToDom(urlArr) {
     $.fn.random = function () {
       return this.eq(Math.floor(Math.random() * 6));
     }
-    $(".recipe-card").random().css({ "background-color": "rgba(247,184,87,0.75)", "color": "#000"});
+    $(".recipe-card").random().css({
+      "background-color": "rgba(247,184,87,0.75)",
+      "color": "#000"
+    });
   })
-  
+
 
   // on click, calls second api (linkpreview) and triggers modal with recipe details
   $('.trigger').click(function (e) {
@@ -98,7 +101,7 @@ function showExpandedView(data) {
 
   let description = data.description;
   let urlLink = data.url;
-  let image = recipes[currentRecipe].image; 
+  let image = recipes[currentRecipe].image;
   let modalLabel = recipes[currentRecipe].label;
   let ingredients = recipes[currentRecipe].ingredientLines;
   let ingredientsList = '';
@@ -110,7 +113,7 @@ function showExpandedView(data) {
   let moreDetails = `<section class="details" role="region"><a href="${urlLink}"><img src="${image}"/></a><ul class="ingredients">${ingredientsList}</ul><p class="description">${description}</p></section>`;
 
   $('.modal-title').text(modalLabel);
-  
+
   $('.content').append(moreDetails);
 
   $('.btn-close').click(function () {
@@ -124,7 +127,7 @@ function showExpandedView(data) {
 
 
 function handleSubmitButton() {
-  $('form').submit(function(e) {
+  $('form').submit(function (e) {
     e.preventDefault();
 
     let recipe = $('#recipe');

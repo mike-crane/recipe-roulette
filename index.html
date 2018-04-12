@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,23 +11,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
+
 <body>
   <header role="banner">
-    <h1>Recipe Roulette</h1>
+    <h1 class="app-heading">Recipe Roulette</h1>
     <form action='#' method='post'>
-      <input id="recipe" name="recipe" type="text" pattern="[A-Za-z].{1,}" title="Must contain 2 or more characters. Cannot contain numbers." placeholder="e.g. chicken" required>
+      <input id="recipe" name="recipe" type="text" pattern="[A-Za-z].{1,}" title="Must contain 2 or more characters. Cannot contain numbers."
+        placeholder="e.g. chicken" required>
       <button type="submit">Search</button>
     </form>
     <button type="submit" class="roulette">Try Your Luck</button>
   </header>
-  
+
   <main role="main">
     <div class="js-search-results search-results"></div>
     <div class="feature-tour">
       <div class="container">
-        <h2>Welcome to Recipe Roulette</h2>
-        <h3>The app that let's you try your luck with whatever ingredient(s) you may have lying around.</h3>
-        <h3>It's as simple as...</h3>
+        <h2 class="welcome-title">Welcome to Recipe Roulette</h2>
+        <h3 class="welcome-subtitle">The app that let's you try your luck with whatever ingredient(s) you may have lying around.</h3>
+        <h3 class="welcome-subtitle">It's as simple as...</h3>
         <div class="intro-box">
           <span class="step">1</span>
           <p>Enter the ingredient(s) into the search field & click the search button.</p>
@@ -41,12 +44,13 @@
         </div>
         <div class="intro-box">
           <span class="step">4</span>
-          <p>If your in the mood to live dangerously, click the 'Try Your Luck' button to have a recipe randomly selected for you.</p>
+          <p>If your in the mood to live dangerously, click the 'Try Your Luck' button to have a recipe randomly selected for
+            you.</p>
         </div>
       </div>
     </div>
   </main>
-  
+
   <div class="modal-wrapper">
     <div class="modal">
       <div class="head">
@@ -57,8 +61,9 @@
       </div>
     </div>
   </div>
-  
+
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>
