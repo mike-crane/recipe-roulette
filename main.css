@@ -82,7 +82,7 @@ section {
 }
 
 section:nth-child(odd) {
-  margin-right: 10%;
+    margin: 0 auto;
 }
 
 img {
@@ -311,6 +311,9 @@ h3 {
   }
   .intro-box:not(:last-child) { 
     margin-right: 4%;
+  }
+  section:nth-child(odd) {
+    margin-right: 10%;
   }
   .modal {
     width:600px;
