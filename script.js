@@ -120,8 +120,6 @@ function showExpandedView(data) {
   $(".modal-title").text(function (index, currentText) {
     return currentText.substr(0, 35);
   });
-
-  // console.log(data);
 }
 
 

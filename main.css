@@ -82,7 +82,7 @@ section {
 }
 
 section:nth-child(odd) {
-  margin-right: 10%;
+    margin: 0 auto;
 }
 
 img {
@@ -128,12 +128,13 @@ img {
 }
 
 .modal{
-  width:600px;
+  width: 95%;
   height:400px;
   display:block;
-  margin:50% 0 0 -300px;
+  margin: 43% auto 0;
   position:relative;
-  top:50%; left:50%;
+  top: 45%;
+  left: 0;
   background:rgba(255,255,255, 0.8);
   border-radius: 5px;
   opacity:0;
@@ -148,9 +149,9 @@ img {
 }
 
 .head{
-  width:90%;
-  height:32px;
-  padding:1em 5%;
+  width:96%;
+  height:22px;
+  padding:1em 2%;
   overflow:hidden;
   background:#000;
   border-top-left-radius: 5px;
@@ -162,7 +163,7 @@ img {
 }
 
 .btn-close{
-  width:32px;
+  width:25px;
   height:32px;
   display:block;
   float:right;
@@ -170,7 +171,7 @@ img {
 
 .btn-close::before, .btn-close::after{
   content:'';
-  width:32px;
+  width:25px;
   height:6px;
   display:block;
   background:#fff;
@@ -178,7 +179,7 @@ img {
 }
 
 .btn-close::before{
-  margin-top:12px;
+  margin-top: 8px;
   -webkit-transform:rotate(45deg);
       -ms-transform:rotate(45deg);
           transform:rotate(45deg);
@@ -197,7 +198,7 @@ img {
 
 .modal-title {
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1.15em;
   font-weight: bold;
   margin: 0;
 }
@@ -210,7 +211,7 @@ img {
 .details img {
   vertical-align: top;
   border: none;
-  width: 25%;
+  width: 35%;
 }
 
 .description {
@@ -222,13 +223,14 @@ img {
 .ingredients {
   display: inline-block;
   margin: 0;
-  width: 300px;
+  width: 50%;
+  padding-left: 25px;
   height: 135px;
   overflow: scroll;
 }
 
 li {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .full-recipe {
@@ -309,6 +311,48 @@ h3 {
   }
   .intro-box:not(:last-child) { 
     margin-right: 4%;
+  }
+  section:nth-child(odd) {
+    margin-right: 10%;
+  }
+  .modal {
+    width:600px;
+    margin:50% 0 0 -300px;
+    top:50%; 
+    left:50%;
+  }
+  .modal-title {
+    font-size: 1.5em;
+  }
+  .head{
+    height:32px;
+    width:90%;
+    padding:1em 5%;
+  }
+  .btn-close{
+    width:32px;
+  }
+  .btn-close::before{
+    margin-top:12px;
+  }
+  .btn-close::before, .btn-close::after{
+    width:32px;
+  }
+  .ingredients {
+    display: inline-block;
+    margin: 0;
+    width: 300px;
+    padding-left: 40px;
+    height: 135px;
+    overflow: scroll;
+  }
+  .details img {
+    vertical-align: top;
+    border: none;
+    width: 25%;
+  }
+  li {
+    font-size: 14px;
   }
 }
 
