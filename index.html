@@ -16,15 +16,15 @@
   <header role="banner">
     <h1 class="app-heading">Recipe Roulette</h1>
     <form action='#' method='post'>
-      <input id="recipe" name="recipe" type="text" pattern="[A-Za-z].{1,}" title="Must contain 2 or more characters. Cannot contain numbers."
-        placeholder="e.g. chicken" required>
+      <input id="recipe" name="search" type="text" pattern="[A-Za-z].{1,}" title="Must contain 2 or more characters. Cannot contain numbers."
+        placeholder="e.g. chicken" aria-label="Search" required>
       <button type="submit">Search</button>
     </form>
     <button type="submit" class="roulette">Try Your Luck</button>
   </header>
 
   <main role="main">
-    <div class="js-search-results search-results"></div>
+    <div class="js-search-results search-results" aria-live="assertive" hidden></div>
     <div class="feature-tour">
       <div class="container">
         <h2 class="welcome-title">Welcome to Recipe Roulette</h2>
@@ -32,7 +32,7 @@
         <h3 class="welcome-subtitle">It's as simple as...</h3>
         <div class="intro-box">
           <span class="step">1</span>
-          <p>Enter the ingredient(s) into the search field & click the search button.</p>
+          <p>Enter the ingredient(s) into the search field and click the search button.</p>
         </div>
         <div class="intro-box">
           <span class="step">2</span>
@@ -57,7 +57,7 @@
         <p class="modal-title"></p>
         <a class="btn-close trigger" href="javascript:;"></a>
       </div>
-      <div class="content">
+      <div class="content" aria-live="assertive" hidden>
       </div>
     </div>
   </div>

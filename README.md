@@ -1,6 +1,6 @@
 # Recipe Roulette
 
-A recipe application that helps users find recipes which contain ingredient(s) that they already have on hand. Recipe search results are narrowed down to a select handful and users have the option to have a single recipe chosen for them at random.
+A recipe application that helps users find recipes which contain ingredient(s) that they already have on hand. Recipe search results are narrowed down to a select handful and users have the option to have a single recipe chosen for them at random. Utilizes the [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api "Edamam's Recipe Search API") in addition to the [LinkPreview API](https://www.linkpreview.net/ "LinkPreview API").
 
 ## Demo
 

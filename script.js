@@ -3,10 +3,15 @@
 let recipes = [];
 let currentRecipe = null;
 
-const recipeEndpoint = 'https://api.edamam.com/search';
+/**
+ * ============================================================================
+ *            calls edamam API to get recipe data
+ * ============================================================================
+ */
 
-// responsible for calling edamam API to get recipe data
 function getRecipeData(searchTerm, callback) {
+
+  const recipeEndpoint = 'https://api.edamam.com/search';
 
   const query = {
     q: searchTerm,
@@ -18,43 +23,56 @@ function getRecipeData(searchTerm, callback) {
   $.getJSON(recipeEndpoint, query, callback);
 }
 
-// function reponsible for parsing out URLs into a new array, shuffling, and making random selection
-function parseUrls(data) {
+
+/**
+ * ============================================================================
+ *            parses, shuffles, and makes random selection of 6 recipes
+ * ============================================================================
+ */
+
+function parseRecipes(data) {
 
   let recipeArr = data.hits;
   let resultArr = [];
 
-  // parse urls into resultArr
+  // parse recipes into resultArr
   for (let i = 0; i < recipeArr.length; i++) {
     resultArr.push(recipeArr[i].recipe);
   }
 
-  // shuffle the order of the url items in resultArr
+  // shuffle the order of the recipe items in resultArr
   const shuffledUrls = resultArr.sort(function () {
-    .5 - Math.random()
+    0.5 - Math.random();
   });
 
-  // select a random segment of 5 items from 
-  let begin = Math.floor(Math.random() * resultArr.length);
+  // select a random segment of 5 items from resultArr
+  let begin = Math.floor(Math.random() * (resultArr.length - 6));
   recipes = shuffledUrls.slice(begin, begin + 6);
 
-  urlsToDom(recipes);
+  recipesToDom(recipes);
 }
 
-// function responsible for appending URL's to the DOM
-function urlsToDom(urlArr) {
+
+/**
+ * ============================================================================
+ *            appends recipe items to the DOM
+ * ============================================================================
+ */
+
+function recipesToDom(arrItems) {
 
   let recipeCard = '';
 
-  for (let i = 0; i < urlArr.length; i++) {
+  // iterate through arrItems to compile into HTML
+  for (let i = 0; i < arrItems.length; i++) {
 
-    let recipeUrl = urlArr[i].url;
-    let recipeImg = urlArr[i].image;
-    let recipeLabel = urlArr[i].label;
+    let recipeUrl = arrItems[i].url;
+    let recipeImg = arrItems[i].image;
+    let recipeLabel = arrItems[i].label;
 
-    recipeCard += `<section role="region"><a href="${recipeUrl}" recipeIndex="${i}" class="recipe-link trigger"><div class="recipe-card"><img src="${recipeImg}"/><p class="label">${recipeLabel}</p></div></a></section>`;
+    recipeCard += `<section role="region"><a href="${recipeUrl}" recipeIndex="${i}" class="recipe-link trigger"><div class="recipe-card"><img src="${recipeImg}" aria-label="${recipeLabel}"/><p class="label">${recipeLabel}</p></div></a></section>`;
 
-    $('.js-search-results').html(recipeCard);
+    $('.js-search-results').prop('hidden', false).html(recipeCard);
 
     // set character limit on recipe labels
     $(".label").text(function (index, currentText) {
@@ -62,19 +80,7 @@ function urlsToDom(urlArr) {
     });
   }
 
-  // randomly selects 1 of the 6 displayed recipes
-  $('.roulette').click(function () {
-    $.fn.random = function () {
-      return this.eq(Math.floor(Math.random() * 6));
-    }
-    $(".recipe-card").random().css({
-      "background-color": "rgba(247,184,87,0.75)",
-      "color": "#000"
-    });
-  })
-
-
-  // on click, calls second api (linkpreview) and triggers modal with recipe details
+  // click handler which calls second api and triggers modal with recipe details
   $('.trigger').click(function (e) {
     e.preventDefault();
 
@@ -93,9 +99,15 @@ function urlsToDom(urlArr) {
     $('.modal-wrapper').toggleClass('open');
     $('main').toggleClass('blur');
 
-  })
+  });
 }
 
+
+/**
+ * ============================================================================
+ *            appends recipe details to modal div
+ * ============================================================================
+ */
 
 function showExpandedView(data) {
 
@@ -106,25 +118,54 @@ function showExpandedView(data) {
   let ingredients = recipes[currentRecipe].ingredientLines;
   let ingredientsList = '';
 
+  // iterate over ingredients array to convert into list items
   for (let i = 0; i < ingredients.length; i++) {
     ingredientsList += '<li>' + ingredients[i] + '</li>';
   }
 
-  let moreDetails = `<section class="details" role="region"><a href="${urlLink}"><img src="${image}"/></a><ul class="ingredients">${ingredientsList}</ul><p class="description">${description}</p></section>`;
+  // compile data from api call into HTML for modal
+  let moreDetails = `<section class="details" role="region"><a href="${urlLink}"><img src="${image}" aria-label="${modalLabel}"/></a><ul class="ingredients">${ingredientsList}</ul><p class="description">${description}</p></section>`;
 
   $('.modal-title').text(modalLabel);
 
-  $('.content').append(moreDetails);
+  $('.content').prop('hidden', false).append(moreDetails);
 
+  // clears out recipe details when modal is closed
   $('.btn-close').click(function () {
     $('.content').empty();
   });
 
+  // set character limit on modal label
   $(".modal-title").text(function (index, currentText) {
     return currentText.substr(0, 35);
   });
 }
 
+
+/**
+ * ============================================================================
+ *            randomly selects 1 of the 6 displayed recipes
+ * ============================================================================
+ */
+
+function handleRouletteButton() {
+  $('.roulette').click(function () {
+    $.fn.random = function () {
+      return this.eq(Math.floor(Math.random() * 6));
+    };
+
+    $(".recipe-card").removeClass("selectedRandom");
+
+    $(".recipe-card").random().addClass("selectedRandom");
+  });
+}
+
+
+/**
+ * ============================================================================
+ *            handles the recipe search button
+ * ============================================================================
+ */
 
 function handleSubmitButton() {
   $('form').submit(function (e) {
@@ -135,11 +176,27 @@ function handleSubmitButton() {
 
     recipe.val('');
 
-    getRecipeData(recipeSearch, parseUrls);
+    getRecipeData(recipeSearch, parseRecipes);
 
+    // romoves the welcome screen when search button is clicked
     $('.feature-tour').css('display', 'none');
+
+    // adds the 'try your luck' button when search button is clicked
     $('.roulette').css('display', 'block');
-  })
+  });
 }
 
-$(handleSubmitButton);
+
+/**
+ * ============================================================================
+ *            executes when the DOM is fully loaded
+ * ============================================================================
+ */
+
+function initiateApp() {
+  $(handleSubmitButton);
+  $(handleRouletteButton);
+}
+
+$(initiateApp);
+
