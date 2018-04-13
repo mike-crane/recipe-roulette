@@ -39,6 +39,9 @@ button {
     margin: 15px auto 0;
     font-size: 20px;
 }
+.roulette:hover {
+    background-color: #832325;
+}
 form {
     text-align: center;
     padding-top: 5px;
@@ -62,12 +65,12 @@ section:nth-child(odd) {
     margin: 0 auto;
 }
 .recipe-card {
-    color: rgb(255,255,255);
-    color: rgba(255,255,255, 0.8);
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.6);
-    border: 4px solid rgb(0,0,0);
-    border: 4px solid rgba(0,0,0, 0.8);
+    color: #ffffff;
+    color: #ffffffcc;
+    background-color: #000000;
+    background-color: #00000099;
+    border: 4px solid #000000;
+    border: 4px solid #000000cc;
     margin: 10px 0;
     border-bottom-right-radius: 50%;
     border-top-right-radius: 50%;
@@ -76,12 +79,18 @@ section:nth-child(odd) {
     overflow: auto;
     zoom: 1;
 }
+.recipe-card:hover {
+    color: #F7B857;
+}
 img {
     display: inline-block;
     vertical-align: middle;
     width: 20%;
-    border-right: 4px solid rgb(0,0,0);
-    border-right: 4px solid rgba(0,0,0, 0.8);
+    border-right: 4px solid #000000;
+    border-right: 4px solid #000000cc;
+}
+img:hover {
+    opacity: 0.8;
 }
 .label {
     font-weight: bold;
@@ -98,26 +107,26 @@ img {
     font-size: 0;
 }
 .container {
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.6);
-    border: 4px solid rgb(0,0,0);
-    border: 4px solid rgba(0,0,0, 0.8);
+    background-color: #000000;
+    background-color: #00000099;
+    border: 4px solid #000000;
+    border: 4px solid #000000cc;
     width: 90%;
     margin: 20px auto 0;
     padding: 0 12px 15px;
     border-radius: 5px;
 }
 .welcome-title {
-    color: rgb(255,255,255);
-    color: rgba(255,255,255, 0.8);
+    color: #ffffff;
+    color: #ffffffcc;
     text-align: center;
     font-size: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 .welcome-subtitle {
-    color: rgb(255,255,255);
-    color: rgba(255,255,255, 0.8);
+    color: #ffffff;
+    color: #ffffffcc;
     font-size: 16px;
     text-align: center;
 }
@@ -128,10 +137,10 @@ img {
     margin-top: 2%;
     width: 100%;
     padding: 0 6px 0 12px;
-    border: 2px solid rgb(255,255,255);
-    border: 2px solid rgba(255,255,255, 0.8);
-    color: rgb(255,255,255);
-    color: rgba(255,255,255, 0.8);
+    border: 2px solid #ffffff;
+    border: 2px solid #ffffffcc;
+    color: #ffffff;
+    color: #ffffffcc;
     border-radius: 4px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -163,8 +172,8 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgb(247,184,87);
-    background: rgba(247,184,87,0.75);
+    background: #f7b857;
+    background: #f7b857bf;
     visibility: hidden;
     opacity: 0;
     -webkit-transition: all 0.25s ease-in-out;
@@ -184,8 +193,8 @@ img {
     position: relative;
     top: 45%;
     left: 0;
-    background: rgb(255,255,255);
-    background: rgba(255,255,255, 0.8);
+    background: #ffffff;
+    background: #ffffffcc;
     border-radius: 5px;
     opacity: 0;
     -webkit-transition: all 0.5s ease-in-out;
@@ -277,8 +286,7 @@ li {
     text-align: center;
 }
 .selectedRandom {
-    background-color: rgba(247,184,87,0.75);
-    color: #000;
+    background-color: #9d292bd9;
 }
 
 /* MEDIA QUERIES */
@@ -359,12 +367,12 @@ li {
         margin-right: 8%;
     }
     .recipe-card {
-        border: 6px solid rgb(0,0,0);
-        border: 6px solid rgba(0,0,0, 0.8);
+        border: 6px solid #000000;
+        border: 6px solid #000000cc;
     }
     img {
-        border-right: 6px solid rgb(0,0,0);
-        border-right: 6px solid rgba(0,0,0, 0.8);
+        border-right: 6px solid #000000;
+        border-right: 6px solid #000000cc;
     }
 }
 @media only screen and (min-width: 1350px) {
@@ -407,11 +415,11 @@ li {
         font-size: 22px;
     }
     .recipe-card {
-        border: 8px solid rgb(0,0,0);
-        border: 8px solid rgba(0,0,0, 0.8);
+        border: 8px solid #000000;
+        border: 8px solid #000000cc;
     }
     img {
-        border-right: 8px solid rgb(0,0,0);
-        border-right: 8px solid rgba(0,0,0, 0.8);
+        border-right: 8px solid #000000;
+        border-right: 8px solid #000000cc;
     }
 }
